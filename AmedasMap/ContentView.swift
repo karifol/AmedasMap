@@ -30,16 +30,11 @@ struct ContentView: View {
                     Image(systemName: "map.fill")
                         .resizable()
                         .frame(width: 35, height: 35)
-//                        .foregroundColor(.white)
                 }
                 .padding(.trailing, 20)
                 .padding(.bottom, 30)
-                
-
             }
-
         }
-
     }
 }
 

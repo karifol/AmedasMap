@@ -20,6 +20,9 @@ struct MapView: View {
     let mapType: MapType;
     let amedasList: [AmedasItem]
 
+    @State private var isSheetPresented = false
+    @State private var selectedAmedas: AmedasItem?
+
     // 表示するマップの中心位置
     @State private var cameraPosition = CLLocationCoordinate2D(
         latitude: 35.681236,
@@ -48,10 +51,43 @@ struct MapView: View {
                     latitude: amedas.lat,
                     longitude: amedas.lon
                 )
-                let serchKey = amedas.name
-                Marker(serchKey, coordinate: targetCoordinate)
+                Annotation("Tsu-Station", coordinate: targetCoordinate, anchor: .center) {
+                    VStack {
+                        Text(amedas.name)
+                    }
+                    .foregroundColor(.blue)
+                    .padding()
+                    .background(in: .capsule)
+                    .onTapGesture {
+                        selectedAmedas = amedas
+                        isSheetPresented = true
+                    }
+                }
+
+
             }
         }
         .mapStyle(mapStyle)
+        .sheet(isPresented: $isSheetPresented) {
+            if let item = selectedAmedas {
+                SheetView(
+                    area: item.area,
+                    id: item.place_id,
+                    type: item.type,
+                    name: item.name,
+                    katakana: item.katakana,
+                    name_info: item.name_info,
+                    address: item.address,
+                    lat: item.lat,
+                    lon: item.lon,
+                    alt: item.alt,
+                    alt_wind: item.alt_wind,
+                    alt_temp: item.alt_temp,
+                    start: item.start,
+                    comment1: item.comment1,
+                    comment2: item.comment2
+                )
+            }
+        }
     }
 }

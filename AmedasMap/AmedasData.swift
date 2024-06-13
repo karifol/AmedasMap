@@ -10,9 +10,21 @@ import SwiftUI
 // Identifiableプロトコルを利用して、アメダス情報をまとめる構造体
 struct AmedasItem: Identifiable {
     let id = UUID()
+    let area: String
+    let place_id: Double
+    let type: String
     let name: String
+    let katakana: String
+    let name_info: String
+    let address: String
     let lat: Double
     let lon: Double
+    let alt: Int
+    let alt_wind: String
+    let alt_temp: String
+    let start: String
+    let comment1: String
+    let comment2: String
 }
 
 // お菓子データ検索用のクラス
@@ -21,9 +33,21 @@ struct AmedasItem: Identifiable {
     // JSONのデータ構造
     typealias ResultJson = [String: Item]
     struct Item: Codable {
+        let area: String
+        let id: Double
+        let type: String
+        let name: String
+        let katakana: String
+        let name_info: String
+        let address: String
         let lat: Double
         let lon: Double
-        let name: String
+        let alt: Int
+        let alt_wind: String
+        let alt_temp: String
+        let start: String
+        let comment1: String
+        let comment2: String
     }
 
     // お菓子のリスト
@@ -58,10 +82,23 @@ struct AmedasItem: Identifiable {
             amedasList = []
             // お菓子データを取得
             for (_, item) in result {
-                let name = item.name
-                let lat = item.lat
-                let lon = item.lon
-                let amedasItem = AmedasItem(name: name, lat: lat, lon: lon)
+                let amedasItem = AmedasItem(
+                    area: item.area,
+                    place_id: item.id,
+                    type: item.type,
+                    name: item.name,
+                    katakana: item.katakana,
+                    name_info: item.name_info,
+                    address: item.address,
+                    lat: item.lat,
+                    lon: item.lon,
+                    alt: item.alt,
+                    alt_wind: item.alt_wind,
+                    alt_temp: item.alt_temp,
+                    start: item.start,
+                    comment1: item.comment1,
+                    comment2: item.comment2
+                )
                 amedasList.append(amedasItem)
             }
         } catch {

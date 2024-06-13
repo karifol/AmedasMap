@@ -14,6 +14,7 @@
 		C417FEF72C1891900066A20E /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C417FEF62C1891900066A20E /* MapView.swift */; };
 		C417FEF92C189AF00066A20E /* AmedasData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C417FEF82C189AF00066A20E /* AmedasData.swift */; };
 		C417FEFB2C19ABEE0066A20E /* amedas_table.json in Resources */ = {isa = PBXBuildFile; fileRef = C417FEFA2C19ABEE0066A20E /* amedas_table.json */; };
+		C417FEFD2C19B0C20066A20E /* SheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C417FEFC2C19B0C20066A20E /* SheetView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		C417FEF62C1891900066A20E /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		C417FEF82C189AF00066A20E /* AmedasData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmedasData.swift; sourceTree = "<group>"; };
 		C417FEFA2C19ABEE0066A20E /* amedas_table.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = amedas_table.json; sourceTree = "<group>"; };
+		C417FEFC2C19B0C20066A20E /* SheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +63,7 @@
 				C417FEFA2C19ABEE0066A20E /* amedas_table.json */,
 				C417FEE72C18917B0066A20E /* AmedasMapApp.swift */,
 				C417FEE92C18917B0066A20E /* ContentView.swift */,
+				C417FEFC2C19B0C20066A20E /* SheetView.swift */,
 				C417FEF82C189AF00066A20E /* AmedasData.swift */,
 				C417FEF62C1891900066A20E /* MapView.swift */,
 				C417FEEB2C18917C0066A20E /* Assets.xcassets */,
@@ -151,6 +154,7 @@
 			files = (
 				C417FEF92C189AF00066A20E /* AmedasData.swift in Sources */,
 				C417FEEA2C18917B0066A20E /* ContentView.swift in Sources */,
+				C417FEFD2C19B0C20066A20E /* SheetView.swift in Sources */,
 				C417FEF72C1891900066A20E /* MapView.swift in Sources */,
 				C417FEE82C18917B0066A20E /* AmedasMapApp.swift in Sources */,
 			);
