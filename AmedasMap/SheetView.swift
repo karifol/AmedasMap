@@ -65,15 +65,30 @@ struct SheetView: View {
                 .padding(.bottom)
             
             VStack {
-                Text("観測装置")
+                Text("観測装置の種類")
                     .font(.title2)
-                Text("観測装置の種類 \(machineType)")
-                Text("観測種目")
+                    .underline()
+                Text(machineType)
             }
+            .padding(.bottom)
+            
+            VStack {
+                Text("観測種目")
+                    .font(.title2)
+                    .underline()
+                VStack {
+                    ForEach(observeTypeList, id: \.self) { observeType in
+                        Text(observeType)
+                    }
+                }
+
+            }
+            .padding(.bottom)
 
             VStack {
                 Text("所在地")
                     .font(.title2)
+                    .underline()
                 Text("住所 \(address)")
                 Text("緯度 \(lat)")
                 Text("経度 \(lon)")
@@ -83,6 +98,7 @@ struct SheetView: View {
             VStack {
                 Text("高さ")
                     .font(.title2)
+                    .underline()
                 Text("海面上の高さ  \(alt)m")
                 Text("風速計の地上の高さ  \(alt_wind)m")
                 Text("温度計の地上の高さ  \(alt_temp)m")

@@ -18,14 +18,14 @@ struct ContentView: View {
     var body: some View {
         VStack {
             // テキスト入力欄
-            TextField("AMeDAS地点名を入力してください", text: $serchKey)
-                .padding()
+//            TextField("AMeDAS地点名を入力してください", text: $serchKey)
+//                .padding()
             ZStack(alignment: .bottomTrailing) {
                 MapView(mapType: .hybrid, amedasList: amedasData.amedasList)
 
                 // マップ
                 Button {
-                    amedasData.getAmedas()
+                    
                 } label: {
                     Image(systemName: "map.fill")
                         .resizable()
@@ -33,7 +33,13 @@ struct ContentView: View {
                 }
                 .padding(.trailing, 20)
                 .padding(.bottom, 30)
+                
+                // 注釈
+                Text("このデータは気象庁より取得したものです")
             }
+        }
+        .onAppear(){
+            amedasData.getAmedas()
         }
     }
 }

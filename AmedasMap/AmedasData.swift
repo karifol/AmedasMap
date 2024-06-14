@@ -82,6 +82,9 @@ struct AmedasItem: Identifiable {
             amedasList = []
             // お菓子データを取得
             for (_, item) in result {
+                if item.type != "四" {
+                    continue
+                }
                 let amedasItem = AmedasItem(
                     area: item.area,
                     place_id: item.id,

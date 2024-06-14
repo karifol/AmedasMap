@@ -55,16 +55,14 @@ struct MapView: View {
                     VStack {
                         Text(amedas.name)
                     }
-                    .foregroundColor(.blue)
                     .padding()
+                    .foregroundColor(.blue)
                     .background(in: .capsule)
                     .onTapGesture {
                         selectedAmedas = amedas
                         isSheetPresented = true
                     }
                 }
-
-
             }
         }
         .mapStyle(mapStyle)
