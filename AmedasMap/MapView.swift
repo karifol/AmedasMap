@@ -51,41 +51,44 @@ struct MapView: View {
                     latitude: amedas.lat,
                     longitude: amedas.lon
                 )
-                Annotation("Tsu-Station", coordinate: targetCoordinate, anchor: .center) {
+                Annotation(amedas.name, coordinate: targetCoordinate, anchor: .center) {
                     VStack {
-                        Text(amedas.name)
+                        Circle()
+                            .fill(Color.blue)
+                            .frame(width: 10, height: 10)
                     }
                     .padding()
                     .foregroundColor(.blue)
-                    .background(in: .capsule)
                     .onTapGesture {
+                        print(amedas.name)
                         selectedAmedas = amedas
                         isSheetPresented = true
+                        
                     }
                 }
             }
         }
         .mapStyle(mapStyle)
-        .sheet(isPresented: $isSheetPresented) {
-            if let item = selectedAmedas {
-                SheetView(
-                    area: item.area,
-                    id: item.place_id,
-                    type: item.type,
-                    name: item.name,
-                    katakana: item.katakana,
-                    name_info: item.name_info,
-                    address: item.address,
-                    lat: item.lat,
-                    lon: item.lon,
-                    alt: item.alt,
-                    alt_wind: item.alt_wind,
-                    alt_temp: item.alt_temp,
-                    start: item.start,
-                    comment1: item.comment1,
-                    comment2: item.comment2
-                )
-            }
+        .sheet(item: $selectedAmedas, onDismiss: {
+            selectedAmedas = nil
+        }) { item in
+            SheetView(
+                area: item.area,
+                id: item.place_id,
+                type: item.type,
+                name: item.name,
+                katakana: item.katakana,
+                name_info: item.name_info,
+                address: item.address,
+                lat: item.lat,
+                lon: item.lon,
+                alt: item.alt,
+                alt_wind: item.alt_wind,
+                alt_temp: item.alt_temp,
+                start: item.start,
+                comment1: item.comment1,
+                comment2: item.comment2
+            )
         }
     }
 }

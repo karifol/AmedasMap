@@ -56,7 +56,7 @@ struct SheetView: View {
         }
         return [""]
     }
-
+    
     var body: some View {
         VStack {
             Text(katakana)
@@ -104,9 +104,6 @@ struct SheetView: View {
                 Text("温度計の地上の高さ  \(alt_temp)m")
             }
             .padding(.bottom)
-
-            
-
         }
     }
 }

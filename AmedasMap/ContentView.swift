@@ -7,35 +7,34 @@
 
 import SwiftUI
 
-
 struct ContentView: View {
-
-    // TextFielsdの文字を保持するための状態変数
-    @State private var serchKey: String = ""
-    
     let amedasData = AmedasData()
     
     var body: some View {
-        VStack {
-            // テキスト入力欄
-//            TextField("AMeDAS地点名を入力してください", text: $serchKey)
-//                .padding()
-            ZStack(alignment: .bottomTrailing) {
-                MapView(mapType: .hybrid, amedasList: amedasData.amedasList)
-
-                // マップ
-                Button {
-                    
-                } label: {
-                    Image(systemName: "map.fill")
-                        .resizable()
-                        .frame(width: 35, height: 35)
+        ZStack {
+            VStack {
+                ZStack(alignment: .bottomTrailing) {
+                    MapView(mapType: .satellite, amedasList: amedasData.amedasList)
+                        .ignoresSafeArea()
                 }
-                .padding(.trailing, 20)
-                .padding(.bottom, 30)
-                
-                // 注釈
-                Text("このデータは気象庁より取得したものです")
+                HStack {
+                    Spacer()
+                    // リンク
+                    VStack {
+                        Link("出典：気象庁", destination: URL(string: "https://www.jma.go.jp/jma/kishou/know/amedas/kaisetsu.html")!)
+                        Text("2024年6月14日取得")
+                    }
+                    Spacer()
+                }
+                    .frame(maxWidth: .infinity)
+            }
+            VStack {
+                Text("タップで詳細表示")
+                    .padding()
+                    .background(Color.black.opacity(0.7))
+                    .cornerRadius(10)
+                    .foregroundColor(.white)
+                Spacer()
             }
         }
         .onAppear(){

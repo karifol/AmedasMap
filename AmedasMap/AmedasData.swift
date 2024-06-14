@@ -52,14 +52,10 @@ struct AmedasItem: Identifiable {
 
     // お菓子のリスト
     var amedasList: [AmedasItem] = []
-    
-    // Web API検索用メソッド　第一引数：keyword　検索したいわーそ
+
     func getAmedas() {
         print("getAmedas")
-        // Taskは非同期で処理を実行できる
         Task {
-            // ここから先は非同期で実行される
-            // 非同期でお菓子を検索する
             await fetchAmedas()
         }
     }
@@ -82,9 +78,6 @@ struct AmedasItem: Identifiable {
             amedasList = []
             // お菓子データを取得
             for (_, item) in result {
-                if item.type != "四" {
-                    continue
-                }
                 let amedasItem = AmedasItem(
                     area: item.area,
                     place_id: item.id,
